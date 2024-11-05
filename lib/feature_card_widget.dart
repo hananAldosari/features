@@ -39,7 +39,7 @@ class FeatureCardWidget extends StatelessWidget {
             Icon(
               icon,
               size: 50,
-              color: Color.fromARGB(255, 49, 49, 49),
+              color: const Color.fromARGB(255, 49, 49, 49),
             ),
             const SizedBox(height: 30),
             Text(
