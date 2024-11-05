@@ -1,18 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(24.774265, 46.738586); //latitude and longitude for riyadh
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green[700],
+      ),
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+        appBar: AppBar(
+          title: const Text('Maps Sample App'),
+          elevation: 2,
+        ),
+        body: GoogleMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 5.0,
+          ),
+          markers: {
+            Marker(
+              markerId: MarkerId('Riyadh'),
+              position: LatLng(24.774265, 46.738586),
+              ),
+              Marker(
+              markerId: MarkerId('Jeddah'),
+              position: LatLng(21.492500, 39.177570),
+              
+              ),
+          },
         ),
       ),
     );
