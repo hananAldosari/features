@@ -1,6 +1,14 @@
+import 'package:features/services/local_notification_service.dart';
+import 'package:features/views/notification_view.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
+import 'package:timezone/data/latest.dart' as tz;
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized(); 
+  LocalNotificationService notificationService = LocalNotificationService();
+  await notificationService.init();
+  tz.initializeTimeZones();
   runApp(const MainApp());
 }
 
@@ -10,11 +18,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: NotificationView()
     );
   }
 }
