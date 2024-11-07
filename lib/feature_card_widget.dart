@@ -6,18 +6,15 @@ class FeatureCardWidget extends StatelessWidget {
     required this.cardColor,
     required this.icon,
     required this.title,
-    required this.onTap,
   });
 
   final Color cardColor;
   final IconData icon;
   final String title;
-  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 10,
