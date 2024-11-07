@@ -1,4 +1,5 @@
 import 'package:features/feature_card_widget.dart';
+import 'package:features/views/notification_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -31,31 +32,43 @@ class HomeView extends StatelessWidget {
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,
-                  children: const [
+                  children: [
                     FeatureCardWidget(
                       cardColor: Color.fromARGB(255, 206, 241, 178),
                       icon: Icons.map_outlined,
                       title: 'Google Maps',
+                      onTap: () {},
                     ),
                     FeatureCardWidget(
                       cardColor: Color.fromARGB(255, 253, 182, 182),
                       icon: Icons.link,
                       title: 'Deep Linking',
+                      onTap: () {},
                     ),
                     FeatureCardWidget(
-                      cardColor: Color(0xffFFF9CA),
+                      cardColor: const Color(0xffFFF9CA),
                       icon: Icons.notifications_active,
                       title: 'Local Notification',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NotificationView(),
+                          ),
+                        );
+                      },
                     ),
                     FeatureCardWidget(
                       cardColor: Color.fromARGB(255, 178, 230, 218),
                       icon: Icons.notifications_active_outlined,
                       title: 'Push Notification',
+                      onTap: () {},
                     ),
                     FeatureCardWidget(
                       cardColor: Color(0xffFFDEB4),
                       icon: Icons.list,
                       title: 'Infinite lists',
+                      onTap: () {},
                     ),
                   ],
                 ),
